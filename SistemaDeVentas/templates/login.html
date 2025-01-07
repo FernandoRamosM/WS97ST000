@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Inicia sesión en SomarTech para acceder a todas las funcionalidades de la plataforma.">
+    <meta name="keywords" content="Login, SomarTech, Acceso, Plataforma">
+    <meta name="author" content="SomarTech">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="/static/css/login.css">
+    <style>body {background-image: url('/static/img/bg.jpg');}</style>
+</head>
+<body>
+    <!-- Contenedor de login -->
+    <div class="login">
+        <h1>Iniciar Sesión</h1>
+        <div class="logo">
+            <img src="/static/img/logo.svg" alt="Logo SomarTech">
+        </div>
+        <form action="/login" method="POST">
+            <input type="text" name="username" placeholder="Usuario" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Entrar</button>
+        </form>
+        <div class="links">
+            <a href="/registrar">¿No tienes cuenta? Regístrate</a>
+            <a id="recover-link">¿Olvidaste tu contraseña?</a>
+            {% if not codRet and mensajeQ %}
+                <p style="margin: 0; color: red;">{{ mensajeQ }}</p>
+            {% endif %}
+        </div>
+    </div>
+    <!-- Modal de recuperación de contraseña -->
+    {% if codRet %}
+        <dialog open id="new-password-modal">
+            <div class="modal-content">
+                <h2>Recuperar contraseña</h2>
+                <form action="/nueva-contraseña" method="post">
+                    <input type="password" id="new-password" name="new-password" placeholder="Nueva contraseña" required>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirma contraseña" required>
+                    <button type="submit">Confirmar</button>
+                    <button type="button" class="close" id="close-modal-np">Cerrar</button>
+                </form>
+            </div>
+        </dialog>
+    {% endif %}
+
+    <div class="modal" id="recover-modal">
+        <div class="modal-content">
+            <h2>Recuperar contraseña</h2>
+            <form action="/recuperar" method="POST">
+                <input type="text" id="usernamefg" name="usernamefg" placeholder="Usuario" required>
+                <input type="date" id="birthdatefg" name="birthdatefg" required>
+                <input type="text" id="dnifg" name="dnifg" placeholder="Ingresa tu DNI" required>
+                <button type="submit">Validar</button>
+                <button type="button" class="close" id="close-modal">Cerrar</button>
+            </form>
+        </div>
+    </div>
+    <script src="/static/js/login.js"></script>
+</body>
+</html>

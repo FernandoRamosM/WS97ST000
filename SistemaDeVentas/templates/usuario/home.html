@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel de usuario para SomarTech">
+    <meta name="author" content="SomarTech">
+    <title>SomarTech | Panel de Usuario</title>
+    <link rel="stylesheet" href="/static/css/usuario/home.css">
+    <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header__content">
+            <div class="header__logo">
+                <img src="/static/img/logo.svg" alt="Logo de SomarTech">
+            </div>
+            <div class="header__info">
+                <h1 class="header__title">SomarTech</h1>
+                <h4 class="header__subtitle">Conectando Innovación</h4>
+            </div>
+            <div class="header__logo-client">
+                <img src="/static/img/logo.svg" alt="Logo del Cliente">
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar__user-info">
+                <img class="sidebar__user-img" src="/static/img/sin-imagen.svg" alt="Usuario sin imagen">
+                <div class="sidebar__user-data">
+                    <h2 class="sidebar__user-name">{{ user[0] }}</h2>
+                    <h4 class="sidebar__user-lastname">{{ user[1] }}</h4>
+                </div>
+                <!-- Cerrar sesión -->
+                <div class="logout-button">
+                    <form action="/logout" method="post">
+                        <button type="submit" class="form__button form__button--cancel">Cerrar sesión</button>
+                    </form>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Container -->
+        <div class="main__container">
+            <!-- Form Section -->
+            <section class="form-section">
+                <h3 class="form-section__title">Formulario de Confirmación</h3>
+                <form class="form" action="" method="post">
+                    <div class="form__group">
+                        <label for="input1" class="form__label">Producto</label>
+                        <input class="form__input" type="text" id="input1" name="input1" placeholder="Producto" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="input2" class="form__label">Cantidad</label>
+                        <input class="form__input" type="text" id="input2" name="input2" placeholder="Cantidad" required>
+                    </div>
+                    <div class="form__actions">
+                        <button class="form__button form__button--confirm" type="submit">Confirmar</button>
+                        <button class="form__button form__button--cancel" type="button" onclick="window.location.href='/'">Cancelar</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Table Section -->
+            <section class="table-section">
+                <h3 class="table-section__title">Información de Venta</h3>
+                <table class="table">
+                    <thead class="table__head">
+                        <tr class="table__row">
+                            <th class="table__header">COD</th>
+                            <th class="table__header">PRODUCTO</th>
+                            <th class="table__header">CANTIDAD</th>
+                            <th class="table__header">PRECIO UND</th>
+                            <th class="table__header">TOTAL</th>
+                            <th class="table__header">ACCIÓN</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table__body">
+                        <tr class="table__row">
+                            <td class="table__cell">1</td>
+                            <td class="table__cell">Producto 1</td>
+                            <td class="table__cell">10</td>
+                            <td class="table__cell">S/ 5.90</td>
+                            <td class="table__cell">S/ 59.00</td>
+                            <td class="table__cell">
+                                <button class="table__button table__button--edit" aria-label="Editar Producto 1">Editar</button>
+                                <button class="table__button table__button--delete" aria-label="Borrar Producto 1">Borrar</button>
+                            </td>
+                        </tr>
+                        <tr class="table__row">
+                            <td class="table__cell">2</td>
+                            <td class="table__cell">Producto 2</td>
+                            <td class="table__cell">20</td>
+                            <td class="table__cell">S/ 10.00</td>
+                            <td class="table__cell">S/ 200.00</td>
+                            <td class="table__cell">
+                                <button class="table__button table__button--edit" aria-label="Editar Producto 2">Editar</button>
+                                <button class="table__button table__button--delete" aria-label="Borrar Producto 2">Borrar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+</body>
+<script src="/static/js/busca_producto.js"></script>
+
+</html>

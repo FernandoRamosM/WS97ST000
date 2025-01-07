@@ -1,0 +1,204 @@
+/* General Body Styling */
+* {
+    font-family: 'Poppins', Arial, sans-serif;
+}
+body {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f4f8;
+    color: #333;
+}
+.conexion {
+    height: 12px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+}
+.stat-activo {
+    width: 10px;
+    height: 10px;
+    background-color: rgb(0, 255, 0);
+    border-radius: 100%;
+    border: 2px solid #000;
+}
+.stat {
+    width: 10px;
+    height: 10px;
+    background-color: #444;
+    border-radius: 100%;
+}
+/* Login Form Styling */
+.login {
+    width: 300px;
+    max-width: 100%;
+    height: 400px;
+    max-height: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.login h1 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    margin-top: 0;
+    color: #0097B2;
+}
+
+/* Logo Styling */
+.logo {
+    margin-bottom: 20px;
+}
+
+.logo img {
+    max-width: 80px;
+    max-height: 80px;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: rotate(10deg);
+}
+
+/* Form Content Styling */
+.form-content {
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 20px;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+input[type="text"],
+input[type="password"],
+button {
+    width: 80%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+    border-color: #0097B2;
+    box-shadow: 0 0 5px rgba(0, 151, 178, 0.5);
+}
+
+button {
+    background-color: #0097B2;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #015768;
+}
+
+/* Links Styling */
+.links {
+    margin-top: 15px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.links a {
+    text-decoration: none;
+    color: #000;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.links a:hover {
+    color: #0097B2;
+    text-decoration: underline;
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    max-width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.modal-content h2 {
+    color: #0097B2;
+}
+
+.modal-content input {
+    padding: 10px;
+    width: calc(100% - 20px);
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.modal-content .close {
+    background-color: #fd0000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content .close:hover {
+    background-color: #ff4343;
+}
+
+/* Keyframe for Modal Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

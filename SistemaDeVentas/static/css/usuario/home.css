@@ -1,0 +1,223 @@
+/* GLOBAL STYLES */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* HEADER */
+header {
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.header__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.header__logo, .header__logo-client {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e9ecef;
+    border: 3px solid #ffffff;
+    padding: 1%;
+    width: 250px; 
+    height: 250px;  
+
+    border-radius: 50%;
+}
+.header__logo img, .header__logo-client img {
+    width: 80%;
+    padding: 10%;
+    object-fit: cover;
+}
+.header__info {
+    flex: 3;
+    text-align: center;
+}
+.header__title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+}
+.header__subtitle {
+    font-size: 1rem;
+    margin: 5px 0 0;
+    color: #adb5bd;
+}
+
+/* MAIN */
+main {
+    display: flex;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+}
+.sidebar {
+    flex: 1;
+    background-color: #495057;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.sidebar__user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sidebar__user-img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+.sidebar__user-data h2, .sidebar__user-data h4 {
+    text-align: center;
+    margin: 5px 0;
+}
+
+/* MAIN CONTAINER */
+.main__container {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* FORM SECTION */
+.form-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.form-section__title {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #343a40;
+}
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.form__group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.form__input {
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form__input:focus {
+    border-color: #495057;
+    outline: none;
+    box-shadow: 0 0 5px rgba(72, 167, 221, 0.6);
+}
+.form__actions {
+    display: flex;
+    gap: 10px;
+}
+.form__button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    max-height: 40px;
+}
+.form__button--confirm {
+    background-color: #28a745;
+    color: #fff;
+}
+.form__button--confirm:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+.form__button--cancel {
+    background-color: #dc3545;
+    color: #fff;
+}
+.form__button--cancel:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+/* TABLE SECTION */
+.table-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.table-section__title {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #343a40;
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    color: #495057;
+}
+.table__head {
+    background-color: #e9ecef;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #343a40;
+}
+.table__row:nth-child(even) {
+    background-color: #f8f9fa;
+}
+.table__row:hover {
+    background-color: #f1f3f5;
+}
+.table__header, .table__cell {
+    padding: 10px;
+    border: 1px solid #ced4da;
+    text-align: left;
+}
+.table__button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.3s ease;
+}
+.table__button--edit {
+    background-color: #007bff;
+    color: #fff;
+}
+.table__button--edit:hover {
+    background-color: #0056b3;
+}
+.table__button--delete {
+    background-color: #dc3545;
+    color: #fff;
+}
+.table__button--delete:hover {
+    background-color: #c82333;
+}
