@@ -84,6 +84,7 @@ main {
     object-fit: cover;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
+
 .sidebar__user-data h2, .sidebar__user-data h4 {
     text-align: center;
     margin: 5px 0;
@@ -133,11 +134,12 @@ main {
     outline: none;
     box-shadow: 0 0 5px rgba(72, 167, 221, 0.6);
 }
-.form__actions {
+.__actions {
+    margin-top: 10px;
     display: flex;
     gap: 10px;
 }
-.form__button {
+.__button {
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
@@ -146,19 +148,19 @@ main {
     transition: background-color 0.3s ease, transform 0.2s ease;
     max-height: 40px;
 }
-.form__button--confirm {
+.__button--confirm {
     background-color: #28a745;
     color: #fff;
 }
-.form__button--confirm:hover {
+.__button--confirm:hover {
     background-color: #218838;
     transform: translateY(-2px);
 }
-.form__button--cancel {
+.__button--cancel {
     background-color: #dc3545;
     color: #fff;
 }
-.form__button--cancel:hover {
+.__button--cancel:hover {
     background-color: #c82333;
     transform: translateY(-2px);
 }

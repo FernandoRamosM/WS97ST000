@@ -12,17 +12,17 @@ class pSTPE02:
     def loginUs(self, parm):  # st97pe098 - Usuarios
         try:
             conn = self.conn
-            _USER, _AUSE = parm
-            QRY = "SELECT CTST, PNOM,STAT FROM STP098 WHERE USER = ?;"
+            _USER, _AUSE, = parm
+            QRY = "SELECT CTST,STAT FROM STP098 WHERE USER = ?;"
             _US = conn.execute(QRY, (_USER,))
             if _US:
-                CTST, PNOM,STAT = _US[0]
+                CTST,STAT = _US[0]
                 if STAT == 'H':
-                    QRY  = "SELECT ACTST,AUSE FROM STP098a WHERE ACTST = ?;"
-                    _US = conn.execute(QRY, (CTST,))
-                    CTST,AUSE = _US[0]
+                    QRY   = "SELECT AUSE FROM STP098a WHERE ACTST = ?;"
+                    _US   = conn.execute(QRY, (CTST,))
+                    AUSE, = _US[0]
                     if _pSTPE03.validaContraseña(_AUSE, AUSE):
-                        return (True, (_USER,PNOM))
+                        return (True, "Credenciales correctas")
                     else:
                         return (False,'Contraseña incorrecta',)
                 else:
@@ -39,9 +39,11 @@ class pSTPE02:
             if _USER.endswith(".STAD"):
                 QRY = "SELECT CTST FROM STP098 WHERE USER = ?;"
                 _ADM = conn.execute(QRY, (_USER,))
-                _CTST, = _ADM[0]
+                _CTST, = _ADM[0]    # Obtiene CTST Adm
             else:
-                _CTST = ''.join([_CTST for _CTST in _USER if _CTST.isdigit()])
+                _CTST = ''.join([_CTST for _CTST in _USER if _CTST.isdigit()]) # Obtiene CTST US
+            # EndIf #
+
             QRY = "SELECT COD,PAIS,TDOC,NDOC FROM STP008 WHERE CTST = ?;"
             sql = conn.execute(QRY,(_CTST,))
             COD,PAIS,TDOC,NDOC = sql[0]
@@ -53,7 +55,10 @@ class pSTPE02:
                 _FNAC = _FNAC.replace('-','')
                 if (NDOC == _NDOC) and (FNAC == _FNAC):
                     return (True, parm,)
+                # EndIf #
+            # EndIf #
             return (False,)
+        # EndTry #
         except Exception as e:
             raise RuntimeError(f"Error al recuperar contraseña: {e}")
 
@@ -78,15 +83,21 @@ class pSTPE02:
             raise RuntimeError(f"Error al actualizar contraseña: {e}")
 
 
-    def localUSuario(self, _USER):
+    def localUsuario(self, _USER):
         try:
-            conn = self.conn
-            QRY = "SELECT COD FROM STPE098 WHERE USER = ?;"
+            conn = self.conn                                         
+            QRY = "SELECT COD,PNOM FROM STP098 WHERE USER = ?;"
             sql = conn.execute(QRY, (_USER,))
             if sql:
-                print(sql[0], 'UBICA USUARIO')
-                return True
+                # UBICA LOCAL USUARIO
+                NCOD,PNOM = sql[0]
+                NCOD = (NCOD*100)+1
+                # OBTIENE NOMBRE Y APELLIDOS
+                NOM_APE = PNOM.split()
+                _NOM = " ".join(NOM_APE[:-2]).upper()
+                _APE = " ".join(NOM_APE[-2:]).upper()
+                return (True, (_USER,NCOD),(_NOM,_APE))
             else:
                 return False
         except Exception as e:
-            raise RuntimeError(f"Error al actualizar contraseña: {e}")
+            raise RuntimeError(f"Error al ubicar usuario: {e}")

@@ -1,48 +1,61 @@
 const productoInput = document.getElementById('input1');
-const productosTabla = document.getElementById('productosTabla');
+const cantidadInput = document.getElementById('input2');
 
-productoInput.addEventListener('keydown', async (event) => {
-    if (event.key === 'Enter' || event.key === 'Tab') {
-        const productoNombre = productoInput.value.trim();
+document.addEventListener('keydown', async (event) => {
+    if (event.target === productoInput && event.key === 'Tab') {
+        const productoCodigo = productoInput.value.trim();
 
-        if (!productoNombre) {
-            alert("Por favor ingrese un nombre de producto.");
+        if (!productoCodigo) {
+            alert("INGRESE PRODUCTO.");
+            event.preventDefault(); // Previene el enfoque en el siguiente campo
             return;
         }
-
         try {
-            const response = await fetch('/buscar_producto', {
+            const response = await fetch('/asigna_ncod', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ nombre: productoNombre })
+                body: JSON.stringify({ NCOD: productoCodigo })
             });
 
-            if (response.ok) {
-                const data = await response.json();
-
-                // Limpiar la tabla
-                productosTabla.innerHTML = '';
-
-                // Agregar el producto encontrado a la tabla
-                const fila = `
-                    <tr>
-                        <td>${data.id}</td>
-                        <td>${data.nombre}</td>
-                        <td>${data.precio}</td>
-                    </tr>
-                `;
-                productosTabla.insertAdjacentHTML('beforeend', fila);
-
-                // Limpiar el input después de buscar
-                productoInput.value = '';
-            } else {
+            if (!response.ok) {
                 const error = await response.json();
                 alert(error.error || "Error al buscar el producto.");
+                event.preventDefault(); // Previene el enfoque si hay un error
             }
         } catch (error) {
             console.error("Error al buscar producto:", error);
+            event.preventDefault(); // Previene el enfoque si hay un error
+        }
+    }
+
+    if (event.target === cantidadInput && event.key === 'Tab') {
+        const productoCantidad = cantidadInput.value.trim();
+
+        if (!productoCantidad) {
+            alert("INGRESE CANTIDAD.");
+            event.preventDefault(); // Previene el enfoque en el siguiente campo
+            return;
+        }
+        try {
+            const response = await fetch('/PREF9701', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ CANT: productoCantidad })
+            });
+
+            if (!response.ok) {
+                const error = await response.json();
+                alert(error.error || "Error al buscar la cantidad.");
+                event.preventDefault(); // Previene el enfoque si hay un error
+            }
+            window.location.reload();
+        } catch (error) {
+            console.error("Error al buscar cantidad:", error);
+            event.preventDefault(); // Previene el enfoque si hay un error
         }
     }
 });
